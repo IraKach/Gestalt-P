@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+            integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+            crossorigin="anonymous">
+    </script>
+<!-- This page includes forms with submit function, show function for picture
+and also the second assignment.  For designing the forms I used the pattern 
+proposed in W3school, but I changed it according to my needs.) -->
+<link rel=stylesheet href="third_page.css">
+<title>Third page with forms to send and task</title>
+</head>
+<body>
+<div id="wrap">
+    <header>
+<a dir="rtl"  style="float:right" href="project_home_heb_2.html">עברית</a>
+ <h1>Gestalt Psychology</h1>
+  <hr>
+  </header>
+<div id= "main">
+      <section>
+        <form id= "frm1" action="http://jkorpela.fi/cgi-bin/echo.cgi" method="post"  enctype="multipart/form-data">
+    <fieldset>
+    <legend><b>Questions for the Visitors</b></legend>
+
+    <label for="fname">Enter your full name</label>
+    <input type="text" id="fname" name="firstname" placeholder="Your name.."><br>
+      
+    <label for="stemail">Enter your email</label>
+    <input type="email" name="stemail" id="stemail" placeholder="Your email.." required>
+               <br><br>
+    <label for="pwd">Enter password (<em>The password should be from 3 to 9 numbers length</em>) </label>
+    <input type="password" name="pwd"id="pwd" 
+    required  maxlength="5">
+    <br> <br>
+    <label for="pwd2">Confirm password</label>
+    <input type="password" name="pwd2"id="pwd2"
+    required  maxlength="9" minlength="3">
+    <br> <br>   
+
+    <p>Please check which information do you want to get:</p>
+    <input type=checkbox name=conf> Want updates about conferences on Gestalt Psychology<br>
+    <input type=checkbox name=pub> Want updates about new publications on Gestalt Psychology<br>
+    <input type=checkbox name=prds> Want news about courses in the field of Gestalt Psychology
+    <br><br>
+    
+    <label for="study">I am interesting in Gestalt Psychology, because</label>
+    <select id="study" name="study">
+      <option value="psychology">I study/research psychology</option>
+      <option value="art">I study/research art</option>
+      <option value="brain studies">I study/research brain studies</option>
+      <option value="graphic design">I study/research graphic design</option>
+    </select>
+    <br /><br />  
+    <label for="degree">Study for degree </label>
+    <br />
+    <input type=radio name=toar value=BA>B.A 
+    <br />
+    <input type=radio name=toar value=MA>M.A
+    <br />
+    <input type=radio name=toar value=PHD>PHD
+    <br /><br />  
+    <input type="submit" value="Send">
+        <br /><br />
+</fieldset>             
+                              
+</form>
+<br>
+<label for="name">Name</label>
+<input type="text" id="name" name="name" placeholder="Please, enter your name.."><br>    
+<label for="comment">Write here your comments about this site</label>
+<textarea rows="10" cols="90" id="comment" >
+
+</textarea><br><br>
+<button id="b1">Send comments</button><br><br><br>
+<script>
+var x=0;
+$("#b1").click(function(){
+var name= $("#name").val();  
+var text= $("textarea").val();
+x= x+ 1;
+var date =new Date;
+var post_code ='<p><img src="media/minus_image.JPG" class = "plusminusicon" alt="-" width="3%">' + " " + x + "."
++ "Posted: " + date + "&nbsp;by:<br>" + '<a href="#name">' + name + "</a>" + "<br>"
++ '<span class ="txt">'+ text+ '</span></p>' + "<hr>"
+ ;
+ var post_element = $(post_code);
+$("#dv").append(post_element);
+$("img.plusminusicon", post_element).click(function () {
+var y= $(this).prop("src");
+    var parent = $(this).parent();
+    console.log("Var y is: " + y);
+    if (y.indexOf("media/minus_image.JPG") > -1) {
+        console.log($(this).prop("src"));
+        $(this).prop("src", "media/plus_image.JPG");
+        console.log("was minus changed to plus");
+        $("span.txt", parent).hide();
+    }
+    if (y.indexOf("media/plus_image.JPG") > -1) {
+        console.log($(this).prop("src"));
+        $(this).prop("src", "media/minus_image.JPG");
+        console.log("was plus changed to minus");
+        console.log($(this).prop("src"));
+        $("span.txt", parent).show();
+    }
+   
+}); 
+});
+</script>
+ <div id="dv" ></div>
+ <script>
+    function form_check() {
+    if ($("#pwd").val() == "") {
+    alert("First name empty");
+    return false;
+    }
+    else if ($("#pwd2").val() == "") {
+    alert("Confirm field is empty");
+    return false;
+    }
+    else if ($("#pwd").val() != $("#pwd2").val())
+    {
+    alert("Pwds not the same");
+    return false;
+    }
+    else {
+    return true;
+    }
+    }
+    $("#frm1").submit(form_check);
+</script>
+</section>  
+  
+    
+<aside>
+      <h2>LINKS</h2>
+      <ul class="big">
+          <li><a href="project_home_1.html">home</a><br><br><br></li>
+      <li><a href="project_forms_textarea_4.html">questions for beginners</a><br><br><br></li>
+      <li><a href="project_tables_3.html">Tables with examples</a><br><br></li>
+      </ul>
+      <figure id=fig1 style="display:none;">
+      <figcaption> International society for Gestalt theory and its application.
+                   Invitaton and Conference information</figcaption>   
+<a href="http://www.gestalttheory.net/cms/index.php?page=20thGTAcongress"><img style="width:100%"
+src="http://www.gestalttheory.net/cms/uploads/images/tagung/Stephansplatz.jpg" 
+alt="Vienna, Stephans Cathedral"/></a>
+<figcaption> <b>Click on the picture</b></figcaption>
+<br><br><hr><br><br>     
+</figure>
+
+<script>$("#fig1").show(1000)</script>
+<a href="https://www.google.com/search?hl=en&as_q=AND+%22interface+design%22&as_epq=gestalt+psychology&as_oq=&as_eq=&as_nlo=&as_nhi=&lr=&cr=&as_qdr=all&as_sitesearch=&as_occt=any&safe=images&as_filetype=pdf&as_rights=">
+Aricles in Google on Subject:
+Gestalt Psychology and Interface Design 
+</a> <br /> <br /><br /> 
+<a href= "Koffka.1922.PDF" target="_blank">Article of Kurt Koffka. <q>Perception: an Introduction to the
+    Gestalt Theory."</q></a><br /> <br /><br /> 
+<a href="Gestalt Psychology as a Missing Link.doc">Irit Katsur's article: <q>Gestalt psychology
+as a Missing Link in Ernst Cassirer’s Mythical Symbolic Form</q></a><br>      
+<br /> <br /><br /> 
+<img src="media/nice.jpg" alt="Eshel" width="245">
+  
+</aside>
+</div>
+</div>   
+   
+</body>
+</html>
